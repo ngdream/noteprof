@@ -1,0 +1,21 @@
+QMenuBar::item:selected{
+    background-color: rgb(58, 58, 58);
+    color:white;
+}
+
+QMenuBar
+{
+    background-color: rgb(218, 218, 218);  
+  padding:1px 4px;
+}
+
+ QMenu::item {
+     padding: 2px 25px 2px 20px;
+     border: 1px solid transparent; /* reserve space for selection border */
+ }
+
+ QMenu::item:selected {
+    border-color: rgb(54, 54, 54);
+    background: rgb(54, 54, 54);
+    color: white;
+}
