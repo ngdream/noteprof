@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>550</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QFrame" name="frame">
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="SideBar" name="widget" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="MinimumExpanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>550</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuprofesseur">
+    <property name="title">
+     <string>professeur</string>
+    </property>
+    <addaction name="actionvoir"/>
+    <addaction name="separator"/>
+    <addaction name="actionajouter"/>
+    <addaction name="separator"/>
+    <addaction name="actionsupprimer"/>
+    <addaction name="actionsupprimer_tout"/>
+   </widget>
+   <widget class="QMenu" name="menuaide">
+    <property name="title">
+     <string>aide</string>
+    </property>
+    <addaction name="actionmanuel"/>
+    <addaction name="separator"/>
+    <addaction name="actionA_propos"/>
+    <addaction name="actioncontacter_nous"/>
+   </widget>
+   <addaction name="menuprofesseur"/>
+   <addaction name="menuaide"/>
+  </widget>
+  <action name="actionvoir">
+   <property name="text">
+    <string>voir</string>
+   </property>
+  </action>
+  <action name="actionajouter">
+   <property name="text">
+    <string>ajouter</string>
+   </property>
+  </action>
+  <action name="actionsupprimer">
+   <property name="text">
+    <string>supprimer</string>
+   </property>
+  </action>
+  <action name="actionsupprimer_tout">
+   <property name="text">
+    <string>supprimer tout</string>
+   </property>
+  </action>
+  <action name="actionmanuel">
+   <property name="text">
+    <string>manuel</string>
+   </property>
+  </action>
+  <action name="actionA_propos">
+   <property name="text">
+    <string>A propos</string>
+   </property>
+  </action>
+  <action name="actioncontacter_nous">
+   <property name="text">
+    <string>contacter nous</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>SideBar</class>
+   <extends>QWidget</extends>
+   <header>sidebar.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
