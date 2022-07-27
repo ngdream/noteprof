@@ -94,6 +94,7 @@
    <addaction name="menuprofesseur"/>
    <addaction name="menuaide"/>
   </widget>
+  <widget class="QStatusBar" name="statusBar"/>
   <action name="actionvoir">
    <property name="text">
     <string>voir</string>
