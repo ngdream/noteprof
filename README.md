@@ -1,4 +1,3 @@
 # noteprof
 
-teacher grading software made by nguewo fossong christian for college
-bilingual catholic mvogt
+c'est logiciel de suivi des enseignement fait par elodream pour le college catholique bilingue mvogt 
