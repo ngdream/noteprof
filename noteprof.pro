@@ -10,21 +10,28 @@ CONFIG += c++17
 
 SOURCES += \
     aboutdialog.cpp \
+    addteacher.cpp \
     contactdialog.cpp \
+    home.cpp \
     main.cpp \
     mainwindow.cpp \
     sidebar.cpp
 
 HEADERS += \
     aboutdialog.h \
+    addteacher.h \
     contactdialog.h \
+    defs.h \
+    home.h \
     mainwindow.h \
     sidebar.h
 
 FORMS += \
     about.ui \
     aboutdialog.ui \
+    addteacher.ui \
     contactdialog.ui \
+    home.ui \
     mainwindow.ui \
     usernotation.ui
 
