@@ -22,9 +22,12 @@ public slots:
     void contact();
     void add();
     void remove();
+    void switchtohome();
+    void actualisedata();
 private:
     home *m_home;
-
+    QAction *m_home_button;
+    QAction * m_edit_button;
     QSqlDatabase m_db;
     Ui::MainWindow *ui;
 };

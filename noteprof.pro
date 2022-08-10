@@ -15,7 +15,8 @@ SOURCES += \
     home.cpp \
     main.cpp \
     mainwindow.cpp \
-    sidebar.cpp
+    sidebar.cpp \
+    teachertable.cpp
 
 HEADERS += \
     aboutdialog.h \
@@ -24,7 +25,8 @@ HEADERS += \
     defs.h \
     home.h \
     mainwindow.h \
-    sidebar.h
+    sidebar.h \
+    teachertable.h
 
 FORMS += \
     about.ui \

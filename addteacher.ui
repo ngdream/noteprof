@@ -26,34 +26,85 @@
    </item>
    <item row="0" column="0">
     <layout class="QFormLayout" name="formLayout">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetMinimumSize</enum>
+     </property>
+     <property name="fieldGrowthPolicy">
+      <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+     </property>
+     <property name="rowWrapPolicy">
+      <enum>QFormLayout::WrapLongRows</enum>
+     </property>
+     <property name="labelAlignment">
+      <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+     </property>
+     <property name="formAlignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
      <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>photo</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QPushButton" name="pushButton">
+         <property name="text">
+          <string>photo</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="photoLineEdit">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="1" column="0">
       <widget class="QLabel" name="nomLabel">
        <property name="text">
         <string>Nom :</string>
        </property>
       </widget>
      </item>
-     <item row="0" column="1">
-      <widget class="QLineEdit" name="nomLineEdit"/>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="nomLineEdit">
+       <property name="placeholderText">
+        <string>entrez le nom </string>
+       </property>
+      </widget>
      </item>
-     <item row="1" column="0">
+     <item row="2" column="0">
       <widget class="QLabel" name="prenomLabel">
        <property name="text">
         <string>Prenom :</string>
        </property>
       </widget>
      </item>
-     <item row="1" column="1">
-      <widget class="QLineEdit" name="prenomLineEdit"/>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="prenomLineEdit">
+       <property name="placeholderText">
+        <string>entrez le prenom</string>
+       </property>
+      </widget>
      </item>
-     <item row="2" column="0">
+     <item row="3" column="0">
       <widget class="QLabel" name="sexLabel">
        <property name="text">
         <string>Sex :</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="1">
+     <item row="3" column="1">
       <widget class="QComboBox" name="sexComboBox">
        <item>
         <property name="text">
@@ -67,19 +118,15 @@
        </item>
       </widget>
      </item>
-     <item row="3" column="0">
-      <widget class="QLabel" name="ageLabel">
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>Age :</string>
+        <string>matricule</string>
        </property>
       </widget>
      </item>
-     <item row="3" column="1">
-      <widget class="QSpinBox" name="ageSpinBox">
-       <property name="buttonSymbols">
-        <enum>QAbstractSpinBox::NoButtons</enum>
-       </property>
-      </widget>
+     <item row="4" column="1">
+      <widget class="QLineEdit" name="matriculeLineEdit"/>
      </item>
     </layout>
    </item>

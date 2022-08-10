@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "defs.h"
+
 namespace Ui {
 class home;
 }
@@ -13,7 +14,10 @@ class home : public QWidget
 
 public:
     explicit home(QWidget *parent = nullptr);
+    void  selectionchanged();
     ~home();
+signals:
+   void sidebaractualised();
 
 private:
     Ui::home *ui;

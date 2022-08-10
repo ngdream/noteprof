@@ -15,10 +15,17 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
-    <widget class="QTableView" name="tableteacher"/>
+    <widget class="Teachertable" name="tableteacher"/>
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Teachertable</class>
+   <extends>QTableView</extends>
+   <header>teachertable.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

@@ -5,10 +5,10 @@
 #include <QEvent>
 
 #define action_height 90
-
+QAction * SideBar::mCheckedAction;
 
 SideBar::SideBar(QWidget *parent) :
-    QWidget(parent), mCheckedAction(NULL), mOverAction(NULL)
+    QWidget(parent), mOverAction(NULL)
 {
     setMouseTracking(true);
 }
@@ -37,10 +37,21 @@ void SideBar::paintEvent(QPaintEvent *event)
         if(action == mOverAction){
             p.fillRect(actionRect, QColor(125, 125, 125));
         }
+        if(action->isEnabled())
+        {
+           p.setPen(QColor(255, 255, 255));
+            action->setCheckable(true);
+        }
 
-        p.setPen(QColor(255, 255, 255));
+        else
+        {
+            p.setPen(QColor(200, 200, 200));
+            action->setCheckable(false);
+        }
+
         QSize size = p.fontMetrics().size(Qt::TextSingleLine, action->text());
         QRect actionTextRect(QPoint(actionRect.width()/2 - size.width()/2, actionRect.bottom()-size.height()-5), size);
+
         p.drawText(actionTextRect, Qt::AlignCenter, action->text());
 
         QRect actionIconRect(0, action_y + 10, actionRect.width(), actionRect.height()-2*actionTextRect.height()-10);
@@ -73,6 +84,7 @@ QAction *SideBar::addAction(const QString &text, const QIcon &icon)
     return action;
 }
 
+
 void SideBar::mousePressEvent(QMouseEvent *event)
 {
     QAction* tempAction = actionAt(event->pos());
@@ -86,6 +98,7 @@ void SideBar::mousePressEvent(QMouseEvent *event)
     tempAction->setChecked(true);
     update();
     QWidget::mousePressEvent(event);
+    emit  click();
 }
 
 

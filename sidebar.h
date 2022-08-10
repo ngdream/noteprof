@@ -12,8 +12,11 @@ class SideBar : public QWidget
        QAction *addAction(const QString &text, const QIcon &icon = QIcon());
        QSize minimumSizeHint() const;
 
-   signals:
+       static QAction *  mCheckedAction;
 
+
+   signals:
+void  click();
    public slots:
 
    protected:
@@ -26,7 +29,6 @@ class SideBar : public QWidget
    private:
        QList<QAction *> mActions;
 
-       QAction *mCheckedAction;
        QAction *mOverAction;
 };
 

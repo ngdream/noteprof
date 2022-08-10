@@ -4,4 +4,10 @@
 #include<QtSql/QSqlQuery>
 #include <QtSql>
 #include <QSqlTableModel>
+
+
+#include <QDialog>
+
+
+#include<QMessageBox>
 #endif // DEFS_H
