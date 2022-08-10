@@ -18,6 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     m_home=new home;
+
     m_home->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
    ui->k->addWidget(m_home);
 
@@ -54,6 +55,11 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::actualisedata()
 {
+    m_edit->close();
+     m_edit=new edition;
+    m_edit->hide();
+    ui->k->addWidget(m_edit);
+
     this->update();
     m_edit_button->setEnabled(true);
     m_edit_button->setIcon(QIcon(QString("edit.png")));
@@ -104,9 +110,16 @@ void MainWindow::remove()
 void MainWindow::switchtohome()
 {
 if(m_home_button->isChecked())
-qDebug()<<"le contenu home";
+{
+      m_home->show();
+      m_edit->hide();
+}
 else if(m_edit_button->isChecked())
-qDebug()<<"le contenu est l'edition";
+{
+
+    m_edit->show();
+    m_home->hide();
+}
 
 }
 

@@ -12,6 +12,7 @@ SOURCES += \
     aboutdialog.cpp \
     addteacher.cpp \
     contactdialog.cpp \
+    edition.cpp \
     home.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -23,6 +24,7 @@ HEADERS += \
     addteacher.h \
     contactdialog.h \
     defs.h \
+    edition.h \
     home.h \
     mainwindow.h \
     sidebar.h \
@@ -33,6 +35,7 @@ FORMS += \
     aboutdialog.ui \
     addteacher.ui \
     contactdialog.ui \
+    edition.ui \
     home.ui \
     mainwindow.ui \
     usernotation.ui

@@ -5,6 +5,7 @@
 #include "aboutdialog.h"
 #include "contactdialog.h"
 #include"home.h"
+#include"edition.h"
 #include"addteacher.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -25,6 +26,7 @@ public slots:
     void switchtohome();
     void actualisedata();
 private:
+    edition *m_edit;
     home *m_home;
     QAction *m_home_button;
     QAction * m_edit_button;
