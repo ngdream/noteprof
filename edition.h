@@ -2,7 +2,7 @@
 #define EDITION_H
 
 #include <QWidget>
-
+#include "addnote.h"
 namespace Ui {
 class edition;
 }
@@ -15,8 +15,12 @@ public:
     explicit edition(QWidget *parent = nullptr);
     ~edition();
 
+private slots:
+    void on_toolButton_2_clicked();
+
 private:
     Ui::edition *ui;
+    QSqlQueryModel *model;
 };
 
 #endif // EDITION_H

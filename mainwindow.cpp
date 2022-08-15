@@ -12,12 +12,87 @@ MainWindow::MainWindow(QWidget *parent)
     m_db.setDatabaseName("database.sqlite");
     m_db.open();
 
+
+
     QSqlQuery query;
-    query.exec("create table teacher(name varchar(20),first_name varchar(20),sex varchar(20), matricule varchar(10) ,photo_path varchar(200) ,ID    integer PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE )");
-    bool  success = query.exec();
+
+     query.exec("PRAGMA foreign_keys = ON;");
+    //create miss table
+     query.exec("create miss ( )");
+
+     // create la table
+    query.exec("create table late (mdata DATE , value int default 0) ");
+
+
+    // create teacher table
+    query.exec("create table teacher"
+               "(name varchar(20)"
+               ",first_name varchar(20),"
+               "sex varchar(20), "
+               "matricule varchar(10) UNIQUE ,photo_path varchar(200) ,"
+               "ID integer PRIMARY KEY AUTOINCREMENT NOT NULL )");
+
+    // create notation document table
+
+    query.exec("create table notation "
+
+               "("
+               "trimestre integer,"
+               "classes varchar(200),"
+               "disciplines varchar(100),"
+               "annee varchar(100),"
+               "id integer PRIMARY KEY AUTOINCREMENT NOT NULL,"
+               "teacherid integer REFERENCES teacher(ID),"
+
+               //ponctuality
+               ""
+               " em integer,"
+
+               //assuidity
+               ""
+               "pc integer ,"
+               "pr integer,"
+               "ps integer,"
+               "ace integer default 0,"
+               "acc integer default 0,"
+
+               //personal skills
+               "ra integer,"
+               "ei integer,"
+               "re integer,"
+               "car integer,"
+               "tv integer,"
+               "r integer default 0 ,"
+
+               "ma integer default 0,"
+               "cl boolean default true,"
+
+
+               //document clearing
+               "modc boolean default true,"
+               "chap boolean default true,"
+               "ca boolean default true,"
+               "ai boolean default true,"
+               "stat boolean default true,"
+               "rdate boolean default true,"
+               "th boolean default true,"
+               "planc boolean default true,"
+               "updatec boolean default true,"
+               "callreg integer default 0,"
+
+               //confection
+               "cs boolean default true,"
+               "cc boolean default true,"
+               "rds integer default 0,"
+               "rdn integer default 0,"
+               " renh boolean default true)");
+
+
+
 
 
     m_home=new home;
+    m_edit=new edition;
 
     m_home->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
    ui->k->addWidget(m_home);

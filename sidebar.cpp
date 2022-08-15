@@ -4,7 +4,7 @@
 #include <QDebug>
 #include <QEvent>
 
-#define action_height 90
+#define action_height 70
 QAction * SideBar::mCheckedAction;
 
 SideBar::SideBar(QWidget *parent) :
@@ -21,9 +21,8 @@ void SideBar::paintEvent(QPaintEvent *event)
     QFont fontText(p.font());
     fontText.setFamily("Helvetica Neue");
     p.setFont(fontText);
-
     int action_y = 0;
-    p.fillRect(rect(), QColor(75, 75, 75));
+    p.fillRect(rect(), QColor(235, 235, 235));
     for(auto action: mActions)
     {
 
@@ -31,15 +30,15 @@ void SideBar::paintEvent(QPaintEvent *event)
 
         if(action->isChecked())
         {
-            p.fillRect(actionRect, QColor(35, 35, 35));
+            p.fillRect(actionRect, QColor(35, 160, 230,100));
         }
 
         if(action == mOverAction){
-            p.fillRect(actionRect, QColor(125, 125, 125));
+            p.fillRect(actionRect, QColor(35, 160, 230,50));
         }
         if(action->isEnabled())
         {
-           p.setPen(QColor(255, 255, 255));
+           p.setPen(QColor(0,0, 0));
             action->setCheckable(true);
         }
 
@@ -54,7 +53,7 @@ void SideBar::paintEvent(QPaintEvent *event)
 
         p.drawText(actionTextRect, Qt::AlignCenter, action->text());
 
-        QRect actionIconRect(0, action_y + 10, actionRect.width(), actionRect.height()-2*actionTextRect.height()-10);
+        QRect actionIconRect(0, action_y + 20, actionRect.width(), actionRect.height()-2*actionTextRect.height()-20);
         QIcon  actionIcon(action->icon());
         actionIcon.paint(&p, actionIconRect);
 

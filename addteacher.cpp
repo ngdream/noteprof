@@ -32,6 +32,9 @@ void addteacher::on_buttonBox_accepted()
      QString photo_path="./path/"+filename ;
      QFile photofile(photo_path);
      photofile.open(QFile::ReadOnly);
+     if(!photofile.isOpen())
+         photo_path=QString("");
+
      int i=0;
      while(photofile.isOpen())
      {

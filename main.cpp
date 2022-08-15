@@ -13,7 +13,6 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     a.setOrganizationName(QString("elodream"));
-
     // open our stylesheet ("style.css")
     QFile file(QString("style.css"));
     file.open(QFile::ReadOnly);

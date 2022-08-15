@@ -43,7 +43,7 @@ home::home(QWidget *parent) :
     ui->tableteacher->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->tableteacher->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tableteacher->setColumnHidden(4,true);
-    connect(ui->tableteacher,&Teachertable::selectionchanged,this,&home::selectionchanged);
+   connect(ui->tableteacher,&Teachertable::selectionchanged,this,&home::selectionchanged);
 
 }
 
