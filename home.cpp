@@ -43,12 +43,24 @@ home::home(QWidget *parent) :
     ui->tableteacher->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->tableteacher->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tableteacher->setColumnHidden(4,true);
-   connect(ui->tableteacher,&Teachertable::selectionchanged,this,&home::selectionchanged);
-
+    connect(ui->tableteacher->selectionModel(), &QItemSelectionModel::selectionChanged,
+  this,&home::selectionchanged
+);
 }
 
 void home::selectionchanged()
 {
+
+
+    QModelIndex index=ui->tableteacher->currentIndex();
+
+
+if(index.row()!=-1)
+{
+    QVariant id=index.sibling(index.row(),4).data();
+    Teachertable::selected=id.value<int>();
+
+}
     //emit signal for sidebar actualisation
     emit sidebaractualised();
 }

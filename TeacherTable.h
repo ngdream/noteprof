@@ -11,12 +11,9 @@ class Teachertable:public  QTableView
 public:
     QSqlTableModel static *model;
     explicit Teachertable(QWidget *parent = nullptr);
-static int selected;
-   public slots:
-    void onselectionChanged();
 
- signals:
-void selectionchanged();
+static int selected;
+
 };
 
 #endif // TEACHERTABLE_H
