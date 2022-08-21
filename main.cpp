@@ -25,6 +25,7 @@ int main(int argc, char *argv[])
     }
 
     MainWindow w;
+    w.resize(1000,700);
     w.show(); // show our application
     return a.exec();
 }

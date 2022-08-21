@@ -46,22 +46,23 @@ MainWindow::MainWindow(QWidget *parent)
 
                //ponctuality
                ""
-               " em integer,"
+               " em boolean true,"
 
                //assuidity
                ""
-               "pc integer ,"
-               "pr integer,"
-               "ps integer,"
+               "pc boolean  default TRUE ,"
+               "pr boolean default TRUE,"
+               "ps boolean default  TRUE,"
+               "pag boolean default TRUE,"
                "ace integer default 0,"
                "acc integer default 0,"
 
                //personal skills
-               "ra integer,"
-               "ei integer,"
-               "re integer,"
-               "car integer,"
-               "tv integer,"
+               "ra boolean default true,"
+               "ei boolean default true,"
+               "re boolean default true,"
+               "car boolean default true,"
+               "tv boolean default true,"
                "r integer default 0 ,"
 
                "ma integer default 0,"
@@ -140,14 +141,24 @@ void MainWindow::actualisedata()
     m_edit_button->setIcon(QIcon(QString("edit.png")));
     ui->sidebar2->show();
     QSqlQuery query;
-    query.prepare("SELECT photo_path FROM teacher WHERE ID =(:id)");
+    query.prepare("SELECT photo_path,name,first_name,matricule FROM teacher WHERE ID =(:id)");
     query.bindValue(":id",Teachertable::selected);
     query.exec();
     query.next();
-    qDebug()<<query.value(0).toString()<<Teachertable::selected;
-QPixmap image(query.value(0).toString());
-;
-ui->photoview->setPixmap(image.scaled(200,200,Qt::KeepAspectRatio));
+    QString nom=query.value(1).toString();
+    QString prenom=query.value(2).toString();
+    if(query.value(0).toString()!="")
+    {
+        QPixmap image(query.value(0).toString());
+        ui->photoview->setPixmap(image.scaled(200,200,Qt::KeepAspectRatio));
+    }
+
+    if(query.value(3).toString() !="")
+    ui->matriculelabel->setText(query.value(3).toString());
+    ui->nomlabel->setText(nom);
+    ui->prenomlabel->setText(prenom);
+    ui->statusBar->showMessage(prenom +" "+ nom);
+
 
 
 }

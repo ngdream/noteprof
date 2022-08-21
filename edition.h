@@ -14,10 +14,10 @@ class edition : public QWidget
 public:
     explicit edition(QWidget *parent = nullptr);
     ~edition();
-
+    static int selected;
 private slots:
     void on_toolButton_2_clicked();
-
+    void onselectionchanged();
 private:
     Ui::edition *ui;
     QSqlQueryModel *model;

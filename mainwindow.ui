@@ -11,14 +11,14 @@
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
   <property name="minimumSize">
    <size>
-    <width>900</width>
+    <width>1000</width>
     <height>700</height>
    </size>
   </property>
@@ -54,7 +54,7 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>18</width>
+          <width>70</width>
           <height>0</height>
          </size>
         </property>
@@ -114,7 +114,7 @@
             </size>
            </property>
            <property name="text">
-            <string>TextLabel</string>
+            <string>photo non spécifié</string>
            </property>
           </widget>
          </item>
@@ -127,6 +127,7 @@
             <widget class="QLabel" name="label">
              <property name="font">
               <font>
+               <bold>true</bold>
                <underline>true</underline>
               </font>
              </property>
@@ -139,6 +140,7 @@
             <widget class="QLabel" name="label_2">
              <property name="font">
               <font>
+               <bold>true</bold>
                <underline>true</underline>
               </font>
              </property>
@@ -147,15 +149,37 @@
              </property>
             </widget>
            </item>
+           <item row="1" column="1">
+            <widget class="QLabel" name="prenomlabel">
+             <property name="text">
+              <string>prenom  non spécifié</string>
+             </property>
+            </widget>
+           </item>
            <item row="2" column="0">
             <widget class="QLabel" name="label_3">
              <property name="font">
               <font>
+               <bold>true</bold>
                <underline>true</underline>
               </font>
              </property>
              <property name="text">
               <string>matricule :</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLabel" name="matriculelabel">
+             <property name="text">
+              <string>matricule non spécifié</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="nomlabel">
+             <property name="text">
+              <string>nom non spécifié</string>
              </property>
             </widget>
            </item>
@@ -206,6 +230,7 @@
    <addaction name="menuoption"/>
    <addaction name="menuaide"/>
   </widget>
+  <widget class="QStatusBar" name="statusBar"/>
   <action name="actionvoir">
    <property name="text">
     <string>voir</string>
