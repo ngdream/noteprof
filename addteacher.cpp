@@ -25,16 +25,18 @@ void addteacher::on_buttonBox_accepted()
      QString matricule=ui->matriculeLineEdit->text();
      QString local_photo_path=ui->photoLineEdit->text();// get a local image to add
 
+
      //get the file name
      QFileInfo fileInfo(local_photo_path);
      QString filename(fileInfo.fileName());
 
-     QString photo_path="./path/"+filename ;
-     QFile photofile(photo_path);
-     photofile.open(QFile::ReadOnly);
-     if(!photofile.isOpen())
-         photo_path=QString("");
 
+     QString photo_path="";
+    if(local_photo_path!="")
+    {
+
+        photo_path="./path/"+filename ;
+        QFile photofile(photo_path);
      int i=0;
      while(photofile.isOpen())
      {
@@ -49,9 +51,11 @@ void addteacher::on_buttonBox_accepted()
          i++;
 
      }
+     QFile::copy(local_photo_path,photo_path );
+    }
 
 
-      QFile::copy(local_photo_path,photo_path );
+
 
 
       // add a new teacher in  database
@@ -62,6 +66,7 @@ void addteacher::on_buttonBox_accepted()
       query.bindValue(":sex",sex);
       query.bindValue(":matricule",matricule);
       query.bindValue(":photo_path",photo_path);
+      qDebug()<<photo_path;
       query.exec();
 
 }

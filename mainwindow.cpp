@@ -18,10 +18,10 @@ MainWindow::MainWindow(QWidget *parent)
 
      query.exec("PRAGMA foreign_keys = ON;");
     //create miss table
-     query.exec("create miss ( )");
+     query.exec("create table absence  (mdata DATE )");
 
      // create la table
-    query.exec("create table late (mdata DATE , value int default 0) ");
+    query.exec("create table delay (mdata DATE , value int default 0) ");
 
 
     // create teacher table
@@ -29,6 +29,7 @@ MainWindow::MainWindow(QWidget *parent)
                "(name varchar(20)"
                ",first_name varchar(20),"
                "sex varchar(20), "
+
                "matricule varchar(10) UNIQUE ,photo_path varchar(200) ,"
                "ID integer PRIMARY KEY AUTOINCREMENT NOT NULL )");
 
@@ -41,6 +42,7 @@ MainWindow::MainWindow(QWidget *parent)
                "classes varchar(200),"
                "disciplines varchar(100),"
                "annee varchar(100),"
+               "slug varchar(100),"
                "id integer PRIMARY KEY AUTOINCREMENT NOT NULL,"
                "teacherid integer REFERENCES teacher(ID),"
 

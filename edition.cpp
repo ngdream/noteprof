@@ -10,7 +10,7 @@ edition::edition(QWidget *parent) :
     ui->setupUi(this);
     model= new QSqlQueryModel;
     QSqlQuery query;
-    query.prepare("SELECT id , trimestre  FROM notation WHERE teacherid =(:id)");
+    query.prepare("SELECT id,slug,trimestre  FROM notation WHERE teacherid =(:id)");
     query.bindValue(":id",Teachertable::selected);
     query.exec();
 
@@ -23,7 +23,9 @@ edition::edition(QWidget *parent) :
     ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tableView->horizontalHeader()->hide();
     ui->tableView->verticalHeader()->hide();
-    ui->tableView->setColumnHidden(1,true);
+    ui->tableView->setColumnHidden(0,true);
+    ui->tableView->setColumnHidden(2,true);
+
 
 
 

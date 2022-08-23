@@ -23,16 +23,19 @@ void addnote::on_addnote_accepted()
      QString classes=ui->classesLineEdit->text();
      QString trimestre=ui->trimestreComboBox->currentText();
      QString discipline=ui->disciplineLineEdit->text();
+          QString slug = ui->slugLineEdit->text();
 
-
+if(slug=="")
+   slug=QString("fiche de notation") + " "+ trimestre + " "+ "année :"+annee;
 
     QSqlQuery query;
-    query.prepare("INSERT INTO notation (disciplines,classes,trimestre,annee,teacherid) VALUES (:discipline,:classes,:trimestre,:annee,:teacherid)");
+    query.prepare("INSERT INTO notation (disciplines,classes,trimestre,annee,teacherid,slug) VALUES (:discipline,:classes,:trimestre,:annee,:teacherid,:slug)");
    query.bindValue(":discipline",discipline);
    query.bindValue(":classes",classes);
    query.bindValue(":trimestre",trimestre);
    query.bindValue(":teacherid",Teachertable::selected);
    query.bindValue(":annee",annee);
+   query.bindValue(":slug",slug);
     query.exec();
 
 }
