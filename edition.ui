@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>874</width>
-    <height>690</height>
+    <width>980</width>
+    <height>790</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -156,7 +156,7 @@
         </sizepolicy>
        </property>
        <property name="currentIndex">
-        <number>1</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="tab_3">
         <attribute name="title">
@@ -331,7 +331,7 @@
             </widget>
            </item>
            <item row="16" column="1">
-            <widget class="QCheckBox" name="checkBox_8">
+            <widget class="QCheckBox" name="car">
              <property name="text">
               <string/>
              </property>
@@ -359,7 +359,7 @@
             </widget>
            </item>
            <item row="19" column="1">
-            <widget class="QSpinBox" name="spinBox_3"/>
+            <widget class="QSpinBox" name="r"/>
            </item>
            <item row="0" column="0">
             <widget class="QLabel" name="label_48">
@@ -382,7 +382,7 @@
             </widget>
            </item>
            <item row="2" column="1">
-            <widget class="QSpinBox" name="spinBox_10"/>
+            <widget class="QSpinBox" name="em"/>
            </item>
            <item row="3" column="0">
             <widget class="QLabel" name="label_50">
@@ -435,17 +435,17 @@
             </widget>
            </item>
            <item row="0" column="1">
-            <widget class="QSpinBox" name="spinBox_4"/>
+            <widget class="QSpinBox" name="ma"/>
            </item>
            <item row="1" column="0">
             <widget class="QLabel" name="label_17">
              <property name="text">
-              <string>utilisation du tableau</string>
+              <string>conduite de la lecon</string>
              </property>
             </widget>
            </item>
            <item row="1" column="1">
-            <widget class="QCheckBox" name="checkBox_10">
+            <widget class="QCheckBox" name="cl">
              <property name="text">
               <string/>
              </property>
@@ -472,7 +472,7 @@
             </widget>
            </item>
            <item row="3" column="1">
-            <widget class="QCheckBox" name="checkBox_11">
+            <widget class="QCheckBox" name="modc">
              <property name="text">
               <string/>
              </property>
@@ -486,7 +486,7 @@
             </widget>
            </item>
            <item row="4" column="1">
-            <widget class="QCheckBox" name="checkBox_12">
+            <widget class="QCheckBox" name="chapc">
              <property name="text">
               <string/>
              </property>
@@ -500,7 +500,7 @@
             </widget>
            </item>
            <item row="5" column="1">
-            <widget class="QCheckBox" name="checkBox_13">
+            <widget class="QCheckBox" name="ca">
              <property name="text">
               <string/>
              </property>
@@ -514,7 +514,7 @@
             </widget>
            </item>
            <item row="6" column="1">
-            <widget class="QCheckBox" name="checkBox_14">
+            <widget class="QCheckBox" name="ai">
              <property name="text">
               <string/>
              </property>
@@ -528,7 +528,7 @@
             </widget>
            </item>
            <item row="7" column="1">
-            <widget class="QCheckBox" name="checkBox_15">
+            <widget class="QCheckBox" name="stat">
              <property name="text">
               <string/>
              </property>
@@ -542,7 +542,7 @@
             </widget>
            </item>
            <item row="8" column="1">
-            <widget class="QCheckBox" name="checkBox_16">
+            <widget class="QCheckBox" name="rdate">
              <property name="text">
               <string/>
              </property>
@@ -556,7 +556,7 @@
             </widget>
            </item>
            <item row="9" column="1">
-            <widget class="QCheckBox" name="checkBox_17">
+            <widget class="QCheckBox" name="th">
              <property name="text">
               <string/>
              </property>
@@ -570,23 +570,23 @@
             </widget>
            </item>
            <item row="10" column="1">
-            <widget class="QCheckBox" name="checkBox_18">
+            <widget class="QCheckBox" name="planc">
              <property name="text">
               <string/>
              </property>
             </widget>
            </item>
-           <item row="11" column="0">
+           <item row="12" column="0">
             <widget class="QLabel" name="label_27">
              <property name="text">
               <string>tenue du registre d'appel</string>
              </property>
             </widget>
            </item>
-           <item row="11" column="1">
-            <widget class="QSpinBox" name="spinBox_5"/>
+           <item row="12" column="1">
+            <widget class="QSpinBox" name="callreg"/>
            </item>
-           <item row="12" column="0">
+           <item row="13" column="0">
             <widget class="QLabel" name="label_28">
              <property name="font">
               <font>
@@ -599,41 +599,41 @@
              </property>
             </widget>
            </item>
-           <item row="13" column="0">
+           <item row="16" column="0">
             <widget class="QLabel" name="label_29">
              <property name="text">
               <string>non respect des délais de dépot</string>
              </property>
             </widget>
            </item>
-           <item row="13" column="1">
-            <widget class="QSpinBox" name="spinBox_7"/>
+           <item row="16" column="1">
+            <widget class="QSpinBox" name="rds"/>
            </item>
-           <item row="14" column="0">
+           <item row="17" column="0">
             <widget class="QLabel" name="label_30">
              <property name="text">
               <string>qualités des sujets</string>
              </property>
             </widget>
            </item>
-           <item row="14" column="1">
-            <widget class="QCheckBox" name="checkBox_20">
+           <item row="17" column="1">
+            <widget class="QCheckBox" name="qs">
              <property name="text">
-              <string>CheckBox</string>
+              <string/>
              </property>
             </widget>
            </item>
-           <item row="15" column="0">
+           <item row="18" column="0">
             <widget class="QLabel" name="label_31">
              <property name="text">
               <string>non respect des délais de dépot de notes</string>
              </property>
             </widget>
            </item>
-           <item row="15" column="1">
-            <widget class="QSpinBox" name="spinBox_6"/>
+           <item row="18" column="1">
+            <widget class="QSpinBox" name="rdn"/>
            </item>
-           <item row="16" column="0">
+           <item row="20" column="0">
             <widget class="QLabel" name="label_32">
              <property name="font">
               <font>
@@ -646,85 +646,141 @@
              </property>
             </widget>
            </item>
-           <item row="17" column="0">
+           <item row="21" column="0">
             <widget class="QLabel" name="label_33">
              <property name="text">
               <string>respect des programmes et progression </string>
              </property>
             </widget>
            </item>
-           <item row="18" column="0">
+           <item row="22" column="0">
             <widget class="QLabel" name="label_34">
              <property name="text">
               <string>fiche de progression collée</string>
              </property>
             </widget>
            </item>
-           <item row="19" column="0">
+           <item row="23" column="0">
             <widget class="QLabel" name="label_35">
              <property name="text">
               <string>cahier de préparation</string>
              </property>
             </widget>
            </item>
-           <item row="20" column="0">
+           <item row="24" column="0">
             <widget class="QLabel" name="label_36">
              <property name="text">
               <string>fiche de préparation</string>
              </property>
             </widget>
            </item>
-           <item row="22" column="0">
+           <item row="26" column="0">
             <widget class="QLabel" name="label_37">
              <property name="text">
               <string>respect des cours  harmonisés</string>
              </property>
             </widget>
            </item>
-           <item row="23" column="0">
+           <item row="27" column="0">
             <widget class="QLabel" name="label_38">
              <property name="text">
               <string>qualité du cours</string>
              </property>
             </widget>
            </item>
-           <item row="17" column="1">
-            <widget class="QCheckBox" name="checkBox_19">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item row="18" column="1">
-            <widget class="QCheckBox" name="checkBox_21">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item row="19" column="1">
-            <widget class="QCheckBox" name="checkBox_22">
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item row="20" column="1">
-            <widget class="QCheckBox" name="checkBox_23">
+           <item row="21" column="1">
+            <widget class="QCheckBox" name="rpp">
              <property name="text">
               <string/>
              </property>
             </widget>
            </item>
            <item row="22" column="1">
-            <widget class="QCheckBox" name="checkBox_24">
+            <widget class="QCheckBox" name="fpc">
              <property name="text">
               <string/>
              </property>
             </widget>
            </item>
            <item row="23" column="1">
-            <widget class="QCheckBox" name="checkBox_25">
+            <widget class="QCheckBox" name="cp">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="24" column="1">
+            <widget class="QCheckBox" name="fp">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="26" column="1">
+            <widget class="QCheckBox" name="rch">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="27" column="1">
+            <widget class="QCheckBox" name="qc">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="0">
+            <widget class="QLabel" name="label_53">
+             <property name="text">
+              <string>cahier de texte a jour</string>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="1">
+            <widget class="QCheckBox" name="updatec">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="14" column="0">
+            <widget class="QLabel" name="label_54">
+             <property name="text">
+              <string>confection des sujets</string>
+             </property>
+            </widget>
+           </item>
+           <item row="15" column="0">
+            <widget class="QLabel" name="label_55">
+             <property name="text">
+              <string>confection des  corrigés</string>
+             </property>
+            </widget>
+           </item>
+           <item row="15" column="1">
+            <widget class="QCheckBox" name="cc">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="14" column="1">
+            <widget class="QCheckBox" name="cs">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="19" column="0">
+            <widget class="QLabel" name="label_56">
+             <property name="text">
+              <string>respect des évaluations non harmonisée</string>
+             </property>
+            </widget>
+           </item>
+           <item row="19" column="1">
+            <widget class="QCheckBox" name="renh">
              <property name="text">
               <string/>
              </property>
@@ -814,55 +870,55 @@
             </widget>
            </item>
            <item row="0" column="1">
-            <widget class="QSpinBox" name="spinBox_8"/>
+            <widget class="QSpinBox" name="mvt"/>
            </item>
            <item row="1" column="1">
-            <widget class="QSpinBox" name="spinBox_9"/>
+            <widget class="QSpinBox" name="mvc"/>
            </item>
            <item row="2" column="1">
-            <widget class="QCheckBox" name="checkBox_26">
+            <widget class="QCheckBox" name="sp">
              <property name="text">
               <string/>
              </property>
             </widget>
            </item>
            <item row="3" column="1">
-            <widget class="QCheckBox" name="checkBox_27">
+            <widget class="QCheckBox" name="dfsp">
              <property name="text">
               <string/>
              </property>
             </widget>
            </item>
            <item row="4" column="1">
-            <widget class="QCheckBox" name="checkBox_28">
+            <widget class="QCheckBox" name="drce">
              <property name="text">
               <string/>
              </property>
             </widget>
            </item>
            <item row="5" column="1">
-            <widget class="QCheckBox" name="checkBox_29">
+            <widget class="QCheckBox" name="prc">
              <property name="text">
               <string/>
              </property>
             </widget>
            </item>
            <item row="6" column="1">
-            <widget class="QCheckBox" name="checkBox_30">
+            <widget class="QCheckBox" name="rpe">
              <property name="text">
               <string/>
              </property>
             </widget>
            </item>
            <item row="7" column="1">
-            <widget class="QCheckBox" name="checkBox_31">
+            <widget class="QCheckBox" name="dsp">
              <property name="text">
               <string/>
              </property>
             </widget>
            </item>
            <item row="8" column="1">
-            <widget class="QCheckBox" name="checkBox_32">
+            <widget class="QCheckBox" name="dch">
              <property name="text">
               <string/>
              </property>
