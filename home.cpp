@@ -15,9 +15,7 @@ void initializeModel(QSqlTableModel *model)
     model->setHeaderData(2, Qt::Horizontal, QObject::tr("sex"));
     model->setHeaderData(3, Qt::Horizontal, QObject::tr("matricule"));
 
-   model->removeColumn(4); //remove id and photo_ath from data view
-
-
+    model->removeColumn(4); //remove id and photo_ath from data view
 
 }
 
@@ -50,10 +48,7 @@ home::home(QWidget *parent) :
 
 void home::selectionchanged()
 {
-
-
     QModelIndex index=ui->tableteacher->currentIndex();
-
 
 if(index.row()!=-1)
 {

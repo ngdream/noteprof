@@ -49,7 +49,6 @@ void addteacher::on_buttonBox_accepted()
          photofile.setFileName(photo_path);
          photofile.open(QFile::ReadOnly);
          i++;
-
      }
      QFile::copy(local_photo_path,photo_path );
     }

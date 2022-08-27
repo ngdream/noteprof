@@ -23,6 +23,7 @@ public slots:
     void contact();
     void add();
     void remove();
+    void removeall();
     void switchtohome();
     void actualisedata();
 private:

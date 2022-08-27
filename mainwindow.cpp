@@ -124,6 +124,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->actionA_propos, &QAction::triggered, this, &MainWindow::about);
     connect(ui->actioncontacter_nous, &QAction::triggered, this, &MainWindow::contact);
     connect(ui->actionajouter, &QAction::triggered, this, &MainWindow::add);
+    connect(ui->actionsupprimer, &QAction::triggered, this, &MainWindow::remove);
+    connect(ui->actionsupprimer_tout,&QAction::triggered, this, &::MainWindow::removeall);
 
     connect(ui->widget, &SideBar::click, this, &MainWindow::switchtohome);
     connect(m_home, &home::sidebaractualised, this, &MainWindow::actualisedata);
@@ -158,9 +160,14 @@ void MainWindow::actualisedata()
         QPixmap image(query.value(0).toString());
         ui->photoview->setPixmap(image.scaled(200, 200, Qt::KeepAspectRatio));
     }
+    else
+    {
+        ui->photoview->setText("Photo non spécifée");
+    }
 
     if (query.value(3).toString() != "")
         ui->matriculelabel->setText(query.value(3).toString());
+
     ui->nomlabel->setText(nom);
     ui->prenomlabel->setText(prenom);
     ui->statusBar->showMessage(prenom + " " + nom);
@@ -171,6 +178,8 @@ void MainWindow::about()
     AboutDialog dialog(this);
     dialog.exec();
 }
+
+
 
 void MainWindow::contact()
 {
@@ -191,10 +200,21 @@ void MainWindow::add()
 
 void MainWindow::remove()
 {
-    contactdialog dialog(this);
-    dialog.exec();
+    QSqlQuery query;
+    query.prepare("delete from teacher where id=(:id)");
+    query.bindValue(":id",Teachertable::selected);
+    query.exec();
+    Teachertable::model->select();
 }
 
+void MainWindow::removeall()
+{
+    QSqlQuery query;
+    query.prepare("TRUNCATE TABLE `teacher`");
+    query.exec();
+    Teachertable::model->select();
+    qDebug()<<"all data removed";
+}
 void MainWindow::switchtohome()
 {
     if (m_home_button->isChecked())

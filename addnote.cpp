@@ -1,9 +1,9 @@
 #include "addnote.h"
 #include "ui_addnote.h"
 #include "teachertable.h"
+#include "edition.h"
 
-
-
+QSqlQueryModel *edition::model;
 addnote::addnote(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::addnote)
@@ -23,19 +23,39 @@ void addnote::on_addnote_accepted()
      QString classes=ui->classesLineEdit->text();
      QString trimestre=ui->trimestreComboBox->currentText();
      QString discipline=ui->disciplineLineEdit->text();
-          QString slug = ui->slugLineEdit->text();
+     QString slug = ui->slugLineEdit->text();
 
-if(slug=="")
+
+     if(annee=="")
+     {
+         int day,month,year;
+         QDateTime::currentDateTime().
+         date().getDate(&year,&month,&day);
+
+         if(month>1 && month<9)
+         annee=QString::number(year-1)+"-"+QString::number(year);
+         else
+         annee=QString::number(year)+"-"+QString::number(year+1);
+     }
+
+   if(slug=="")
    slug=QString("fiche de notation") + " "+ trimestre + " "+ "année :"+annee;
 
-    QSqlQuery query;
-    query.prepare("INSERT INTO notation (disciplines,classes,trimestre,annee,teacherid,slug) VALUES (:discipline,:classes,:trimestre,:annee,:teacherid,:slug)");
+   QSqlQuery query;
+   query.prepare("INSERT INTO notation (disciplines,classes,trimestre,annee,teacherid,slug) VALUES (:discipline,:classes,:trimestre,:annee,:teacherid,:slug)");
    query.bindValue(":discipline",discipline);
    query.bindValue(":classes",classes);
    query.bindValue(":trimestre",trimestre);
    query.bindValue(":teacherid",Teachertable::selected);
    query.bindValue(":annee",annee);
    query.bindValue(":slug",slug);
-    query.exec();
 
+
+   QSqlQuery q;
+   q.prepare("SELECT id,slug,trimestre  FROM notation WHERE teacherid =(:id)");
+   q.bindValue(":id",Teachertable::selected);
+   q.exec();
+   edition::model->setQuery(q);
+   edition::model->fetchMore();
+   query.exec();
 }

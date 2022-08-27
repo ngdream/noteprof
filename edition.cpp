@@ -2,19 +2,31 @@
 #include "ui_edition.h"
 #include "teachertable.h"
 #include <QtPrintSupport/QtPrintSupport>
+
+
+//unused
+void edition::on_spinBox_4_valueChanged(int arg1){}
+void edition::on_spinBox_3_valueChanged(int arg1){}
+void edition::on_rds_textChanged(QString const &){}
+void edition::on_callreg_textChanged(QString const &){}
+void edition::on_checkBox_8_stateChanged(int arg1){}
+void edition::on_spinBox_10_valueChanged(int arg1){}
+
+
 int edition::selected;
+
 edition::edition(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::edition)
 {
     ui->setupUi(this);
-    model= new QSqlQueryModel;
+    edition::model= new QSqlQueryModel;
     QSqlQuery query;
     query.prepare("SELECT id,slug,trimestre  FROM notation WHERE teacherid =(:id)");
     query.bindValue(":id",Teachertable::selected);
     query.exec();
 
-    model->setQuery(query);
+    edition::model->setQuery(query);
 
     ui->tableView->setModel(model);
     ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
@@ -26,33 +38,21 @@ edition::edition(QWidget *parent) :
     ui->tableView->setColumnHidden(0,true);
     ui->tableView->setColumnHidden(2,true);
 
-
-
-
-
-    connect(ui->tableView->selectionModel(), &QItemSelectionModel::selectionChanged,
-  this,&edition::onselectionchanged
-);
-    if(model->rowCount())
+    connect(ui->tableView->selectionModel(), &QItemSelectionModel::selectionChanged,this,&edition::onselectionchanged);
+    if(edition::model->rowCount())
     {
-    QModelIndex index =model->index(0,0);
-    ui->tableView->setCurrentIndex(index);
-    ui->label_52->hide();
-
+        QModelIndex index =edition::model->index(0,0);
+        ui->tableView->setCurrentIndex(index);
+        ui->label_52->hide();
     }
     else
     {
         ui->tabWidget->hide();
-
-
-
     }
 }
 
 void edition::onselectionchanged()
 {
-
-
     QModelIndex index=ui->tableView->currentIndex();
 
         if(index.row()!=-1)
@@ -173,7 +173,6 @@ edition::~edition()
 void edition::on_toolButton_2_clicked()
 {
 addnote dialog(this);
-
 dialog.exec();
 }
 
@@ -187,8 +186,6 @@ void edition::on_em_valueChanged(int arg1)
     query.exec();
 }
 
-
-
 void edition::on_pc_stateChanged(int arg1)
 {
     QSqlQuery query;
@@ -197,7 +194,6 @@ void edition::on_pc_stateChanged(int arg1)
     query.bindValue(":id",edition::selected);
     query.exec();
 }
-
 
 void edition::on_pr_stateChanged(int arg1)
 {
@@ -208,7 +204,6 @@ void edition::on_pr_stateChanged(int arg1)
     query.exec();
 }
 
-
 void edition::on_ps_stateChanged(int arg1)
 {
     QSqlQuery query;
@@ -217,7 +212,6 @@ void edition::on_ps_stateChanged(int arg1)
     query.bindValue(":id",edition::selected);
     query.exec();
 }
-
 
 void edition::on_pag_stateChanged(int arg1)
 {
@@ -228,8 +222,6 @@ void edition::on_pag_stateChanged(int arg1)
     query.exec();
 }
 
-
-
 void edition::on_ace_valueChanged(int arg1)
 {
     QSqlQuery query;
@@ -238,7 +230,6 @@ void edition::on_ace_valueChanged(int arg1)
     query.bindValue(":id",edition::selected);
     query.exec();
 }
-
 
 void edition::on_acc_valueChanged(int arg1)
 {
@@ -249,7 +240,6 @@ void edition::on_acc_valueChanged(int arg1)
     query.exec();
 }
 
-
 void edition::on_ra_stateChanged(int arg1)
 {
     QSqlQuery query;
@@ -258,9 +248,6 @@ void edition::on_ra_stateChanged(int arg1)
     query.bindValue(":id",edition::selected);
     query.exec();
 }
-
-
-
 
 void edition::on_ei_stateChanged(int arg1)
 {
@@ -271,7 +258,6 @@ void edition::on_ei_stateChanged(int arg1)
     query.exec();
 }
 
-
 void edition::on_re_stateChanged(int arg1)
 {
     QSqlQuery query;
@@ -280,9 +266,6 @@ void edition::on_re_stateChanged(int arg1)
     query.bindValue(":id",edition::selected);
     query.exec();
 }
-
-
-
 
 void edition::on_car_stateChanged(int arg1)
 {
@@ -293,7 +276,6 @@ void edition::on_car_stateChanged(int arg1)
     query.exec();
 }
 
-
 void edition::on_tv_stateChanged(int arg1)
 {
     QSqlQuery query;
@@ -302,8 +284,6 @@ void edition::on_tv_stateChanged(int arg1)
     query.bindValue(":id",edition::selected);
     query.exec();
 }
-
-
 
 void edition::on_r_valueChanged(int arg1)
 {
@@ -314,8 +294,6 @@ void edition::on_r_valueChanged(int arg1)
     query.exec();
 }
 
-
-
 void edition::on_cl_stateChanged(int arg1)
 {
     QSqlQuery query;
@@ -324,8 +302,6 @@ void edition::on_cl_stateChanged(int arg1)
     query.bindValue(":id",edition::selected);
     query.exec();
 }
-
-
 
 void edition::on_modc_stateChanged(int arg1)
 {
@@ -336,7 +312,6 @@ void edition::on_modc_stateChanged(int arg1)
     query.exec();
 }
 
-
 void edition::on_chapc_stateChanged(int arg1)
 {
     QSqlQuery query;
@@ -345,7 +320,6 @@ void edition::on_chapc_stateChanged(int arg1)
     query.bindValue(":id",edition::selected);
     query.exec();
 }
-
 
 void edition::on_ca_stateChanged(int arg1)
 {
@@ -356,7 +330,6 @@ void edition::on_ca_stateChanged(int arg1)
     query.exec();
 }
 
-
 void edition::on_stat_stateChanged(int arg1)
 {
     QSqlQuery query;
@@ -366,9 +339,6 @@ void edition::on_stat_stateChanged(int arg1)
     query.exec();
 }
 
-
-
-
 void edition::on_rdate_stateChanged(int arg1)
 {
     QSqlQuery query;
@@ -377,9 +347,6 @@ void edition::on_rdate_stateChanged(int arg1)
     query.bindValue(":id",edition::selected);
     query.exec();
 }
-
-
-
 
 void edition::on_planc_stateChanged(int arg1)
 {
@@ -432,7 +399,6 @@ void edition::on_rds_valueChanged(int arg1)
     query.exec();
 }
 
-
 void edition::on_callreg_valueChanged(int arg1)
 {
     QSqlQuery query;
@@ -441,9 +407,6 @@ void edition::on_callreg_valueChanged(int arg1)
     query.bindValue(":id",edition::selected);
     query.exec();
 }
-
-
-
 
 void edition::on_qs_stateChanged(int arg1)
 {
@@ -454,9 +417,6 @@ void edition::on_qs_stateChanged(int arg1)
     query.exec();
 }
 
-
-
-
 void edition::on_rdn_valueChanged(int arg1)
 {
     QSqlQuery query;
@@ -466,11 +426,10 @@ void edition::on_rdn_valueChanged(int arg1)
     query.exec();
 }
 
-
 void edition::on_renh_stateChanged(int arg1)
 {
     QSqlQuery query;
-    query.prepare("UPDATE notation set qs = (:val) where id=(:id)");
+    query.prepare("UPDATE notation set renh = (:val) where id=(:id)");
     query.bindValue(":val",(arg1==Qt::Unchecked)?false:true);
     query.bindValue(":id",edition::selected);
     query.exec();
@@ -485,8 +444,6 @@ void edition::on_ai_stateChanged(int arg1)
     query.exec();
 }
 
-
-
 void edition::on_ma_valueChanged(int arg1)
 {
     QSqlQuery query;
@@ -495,7 +452,6 @@ void edition::on_ma_valueChanged(int arg1)
     query.bindValue(":id",edition::selected);
     query.exec();
 }
-
 
 void edition::on_th_stateChanged(int arg1)
 {
@@ -506,25 +462,160 @@ void edition::on_th_stateChanged(int arg1)
     query.exec();
 }
 
+void edition::on_qc_stateChanged(int arg1)
+{
+    QSqlQuery query;
+    query.prepare("UPDATE notation set qc = (:val) where id=(:id)");
+    query.bindValue(":val",(arg1==Qt::Unchecked)?false:true);
+    query.bindValue(":id",edition::selected);
+    query.exec();
+}
+
+void edition::on_rch_stateChanged(int arg1)
+{
+    QSqlQuery query;
+    query.prepare("UPDATE notation set rch = (:val) where id=(:id)");
+    query.bindValue(":val",(arg1==Qt::Unchecked)?false:true);
+    query.bindValue(":id",edition::selected);
+    query.exec();
+}
+
+void edition::on_fp_stateChanged(int arg1)
+{
+    QSqlQuery query;
+    query.prepare("UPDATE notation set fp = (:val) where id=(:id)");
+    query.bindValue(":val",(arg1==Qt::Unchecked)?false:true);
+    query.bindValue(":id",edition::selected);
+    query.exec();
+}
+
+
+void edition::on_cp_stateChanged(int arg1)
+{
+    QSqlQuery query;
+    query.prepare("UPDATE notation set cp = (:val) where id=(:id)");
+    query.bindValue(":val",(arg1==Qt::Unchecked)?false:true);
+    query.bindValue(":id",edition::selected);
+    query.exec();
+}
+
+
+void edition::on_fpc_stateChanged(int arg1)
+{
+    QSqlQuery query;
+    query.prepare("UPDATE notation set fpc = (:val) where id=(:id)");
+    query.bindValue(":val",(arg1==Qt::Unchecked)?false:true);
+    query.bindValue(":id",edition::selected);
+    query.exec();
+}
 
 
 
 
 
+void edition::on_rpp_stateChanged(int arg1)
+{
+    QSqlQuery query;
+    query.prepare("UPDATE notation set rpp = (:val) where id=(:id)");
+    query.bindValue(":val",(arg1==Qt::Unchecked)?false:true);
+    query.bindValue(":id",edition::selected);
+    query.exec();
+}
 
-//unused
-void edition::on_spinBox_4_valueChanged(int arg1){}
-void edition::on_spinBox_3_valueChanged(int arg1){}
-void edition::on_rds_textChanged(QString const &){}
-void edition::on_callreg_textChanged(QString const &){}
-void edition::on_checkBox_8_stateChanged(int arg1){}
-void edition::on_spinBox_10_valueChanged(int arg1){}
+void edition::on_mvt_valueChanged(int arg1)
+{
+    QSqlQuery query;
+    query.prepare("UPDATE notation set mvt = (:val) where id=(:id)");
+    query.bindValue(":val",arg1);
+    query.bindValue(":id",edition::selected);
+    query.exec();
+}
+
+void edition::on_mvc_valueChanged(int arg1)
+{
+    QSqlQuery query;
+    query.prepare("UPDATE notation set mvc = (:val) where id=(:id)");
+    query.bindValue(":val",arg1);
+    query.bindValue(":id",edition::selected);
+    query.exec();
+}
 
 
 
+void edition::on_sp_stateChanged(int arg1)
+{
+    QSqlQuery query;
+    query.prepare("UPDATE notation set sp = (:val) where id=(:id)");
+    query.bindValue(":val",(arg1==Qt::Unchecked)?false:true);
+    query.bindValue(":id",edition::selected);
+    query.exec();
+}
 
 
+void edition::on_dfsp_stateChanged(int arg1)
+{
+    QSqlQuery query;
+    query.prepare("UPDATE notation set dfsp = (:val) where id=(:id)");
+    query.bindValue(":val",(arg1==Qt::Unchecked)?false:true);
+    query.bindValue(":id",edition::selected);
+    query.exec();
+}
 
 
+void edition::on_drce_stateChanged(int arg1)
+{
+    QSqlQuery query;
+    query.prepare("UPDATE notation set drce = (:val) where id=(:id)");
+    query.bindValue(":val",(arg1==Qt::Unchecked)?false:true);
+    query.bindValue(":id",edition::selected);
+    query.exec();
+}
 
+
+void edition::on_prc_stateChanged(int arg1)
+{
+    QSqlQuery query;
+    query.prepare("UPDATE notation set prc = (:val) where id=(:id)");
+    query.bindValue(":val",(arg1==Qt::Unchecked)?false:true);
+    query.bindValue(":id",edition::selected);
+    query.exec();
+}
+
+
+void edition::on_rpe_stateChanged(int arg1)
+{
+    QSqlQuery query;
+    query.prepare("UPDATE notation set rpe = (:val) where id=(:id)");
+    query.bindValue(":val",(arg1==Qt::Unchecked)?false:true);
+    query.bindValue(":id",edition::selected);
+    query.exec();
+}
+
+void edition::on_dsp_stateChanged(int arg1)
+{
+    QSqlQuery query;
+    query.prepare("UPDATE notation set dsp = (:val) where id=(:id)");
+    query.bindValue(":val",(arg1==Qt::Unchecked)?false:true);
+    query.bindValue(":id",edition::selected);
+    query.exec();
+}
+
+void edition::on_dch_stateChanged(int arg1)
+{
+    QSqlQuery query;
+    query.prepare("UPDATE notation set dch = (:val) where id=(:id)");
+    query.bindValue(":val",(arg1==Qt::Unchecked)?false:true);
+    query.bindValue(":id",edition::selected);
+    query.exec();
+}
+
+
+void edition::on_toolButton_clicked()
+{
+    QSqlQuery query;
+    query.prepare("delete from notation where id=(:id)");
+    query.bindValue(":id",edition::selected);
+    query.exec();
+
+}
 

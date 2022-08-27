@@ -14,6 +14,7 @@ class edition : public QWidget
 public:
     explicit edition(QWidget *parent = nullptr);
     ~edition();
+    QSqlQueryModel static *model;
     static int selected;
 private slots:
     void on_toolButton_2_clicked();
@@ -92,9 +93,41 @@ private slots:
 
     void on_th_stateChanged(int arg1);
 
+    void on_qc_stateChanged(int arg1);
+
+    void on_rch_stateChanged(int arg1);
+
+    void on_fp_stateChanged(int arg1);
+
+    void on_cp_stateChanged(int arg1);
+
+    void on_fpc_stateChanged(int arg1);
+
+    void on_rpp_stateChanged(int arg1);
+
+    void on_mvt_valueChanged(int arg1);
+
+    void on_mvc_valueChanged(int arg1);
+
+    void on_sp_stateChanged(int arg1);
+
+    void on_dfsp_stateChanged(int arg1);
+
+    void on_drce_stateChanged(int arg1);
+
+    void on_prc_stateChanged(int arg1);
+
+    void on_rpe_stateChanged(int arg1);
+
+    void on_dsp_stateChanged(int arg1);
+
+    void on_dch_stateChanged(int arg1);
+
+    void on_toolButton_clicked();
+
 private:
     Ui::edition *ui;
-    QSqlQueryModel *model;
+
 };
 
 #endif // EDITION_H

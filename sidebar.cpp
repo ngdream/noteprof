@@ -13,7 +13,6 @@ SideBar::SideBar(QWidget *parent) :
     setMouseTracking(true);
 }
 
-
 void SideBar::paintEvent(QPaintEvent *event)
 {
     QPainter p(this);
@@ -129,8 +128,7 @@ QAction* SideBar::actionAt(const QPoint &at)
     for(auto action: mActions)
     {
         QRect actionRect(0, action_y, rect().width(), action_height);
-        if(actionRect.contains(at))
-            return action;
+        if(actionRect.contains(at))return action;
         action_y += actionRect.height();
     }
     return NULL;
