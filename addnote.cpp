@@ -51,11 +51,13 @@ void addnote::on_addnote_accepted()
    query.bindValue(":slug",slug);
 
 
-   QSqlQuery q;
-   q.prepare("SELECT id,slug,trimestre  FROM notation WHERE teacherid =(:id)");
-   q.bindValue(":id",Teachertable::selected);
-   q.exec();
-   edition::model->setQuery(q);
+
+  //works now!!
+
+
    edition::model->fetchMore();
    query.exec();
+   QSqlQuery q = edition::model->query();
+   q.exec();
+   edition::model->setQuery(q);
 }

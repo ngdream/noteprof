@@ -16,12 +16,12 @@ MainWindow::MainWindow(QWidget *parent)
     query.exec("PRAGMA foreign_keys = ON;");
     // create miss table
     query.exec("create table absence  (mdata DATE,"
-               "notationid integer REFERENCES notation(id) )");
+               "notationid integer REFERENCES notation(id) ON DELETE CASCADE )");
 
     // create la table
     query.exec("create table delay (mdata DATE ,"
                " value int default 0,"
-               "notationid integer REFERENCES notation(id)) ");
+               "notationid integer REFERENCES notation(id) ON DELETE CASCADE); ");
 
     // create teacher table
     query.exec("create table teacher"
@@ -29,7 +29,7 @@ MainWindow::MainWindow(QWidget *parent)
                ",first_name varchar(20),"
                "sex varchar(20), "
                "matricule varchar(10),photo_path varchar(200) ,"
-               "ID integer PRIMARY KEY AUTOINCREMENT NOT NULL )");
+               "ID integer PRIMARY KEY AUTOINCREMENT NOT NULL );");
 
     // create notation document table
 
@@ -41,7 +41,7 @@ MainWindow::MainWindow(QWidget *parent)
                "annee varchar(100),"
                "slug varchar(100),"
                "id integer PRIMARY KEY AUTOINCREMENT NOT NULL,"
-               "teacherid integer REFERENCES teacher(ID),"
+               "teacherid integer REFERENCES teacher(ID) ON DELETE CASCADE,"
 
                // ponctuality
                ""
@@ -102,7 +102,7 @@ MainWindow::MainWindow(QWidget *parent)
                "prc boolean default true,"
                "rpe boolean default true,"
                "dsp boolean default true,"
-               "dch boolean default true)");
+               "dch boolean default true);");
 
     m_home = new home;
     m_edit = new edition;
@@ -201,8 +201,9 @@ void MainWindow::add()
 void MainWindow::remove()
 {
     QSqlQuery query;
-    query.prepare("delete from teacher where id=(:id)");
+    query.prepare("delete from teacher where id=(:id);");
     query.bindValue(":id",Teachertable::selected);
+    qDebug()<<Teachertable::selected;
     query.exec();
     Teachertable::model->select();
 }
@@ -210,8 +211,12 @@ void MainWindow::remove()
 void MainWindow::removeall()
 {
     QSqlQuery query;
-    query.prepare("TRUNCATE TABLE `teacher`");
+    query.prepare("DELETE FROM teacher;");
     query.exec();
+    if (!query.exec()) {
+        qDebug()<<query.lastError();
+        return;
+    }
     Teachertable::model->select();
     qDebug()<<"all data removed";
 }

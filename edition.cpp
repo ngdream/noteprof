@@ -68,7 +68,7 @@ void edition::onselectionchanged()
     query.exec();
     query.next();
     qDebug()<<query.value(1).toString()<<Teachertable::selected;
-/*    QFile f("notebase.htm");
+  QFile f("notebase.htm");
     f.open(QFile::ReadOnly);
 QString html;
     QTextStream in(&html);
