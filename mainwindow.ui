@@ -233,7 +233,7 @@
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionvoir">
    <property name="text">
-    <string>voir</string>
+    <string>modifier</string>
    </property>
   </action>
   <action name="actionajouter">

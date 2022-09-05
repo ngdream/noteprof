@@ -15,11 +15,14 @@ MainWindow::MainWindow(QWidget *parent)
 
     query.exec("PRAGMA foreign_keys = ON;");
     // create miss table
-    query.exec("create table absence  (mdata DATE,"
+    query.exec("create table absence  (mdata varchar(100),"
+               "ID integer PRIMARY KEY AUTOINCREMENT NOT NULL,"
+               "value int default 0,"
                "notationid integer REFERENCES notation(id) ON DELETE CASCADE )");
 
     // create la table
-    query.exec("create table delay (mdata DATE ,"
+    query.exec("create table delay (mdata varchar(100),"
+               "id integer PRIMARY KEY AUTOINCREMENT NOT NULL,"
                " value int default 0,"
                "notationid integer REFERENCES notation(id) ON DELETE CASCADE); ");
 
@@ -102,7 +105,9 @@ MainWindow::MainWindow(QWidget *parent)
                "prc boolean default true,"
                "rpe boolean default true,"
                "dsp boolean default true,"
-               "dch boolean default true);");
+               "dch boolean default true,"
+               "classed boolean default false,"
+               "titulaire boolean default false);");
 
     m_home = new home;
     m_edit = new edition;
@@ -124,6 +129,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->actionA_propos, &QAction::triggered, this, &MainWindow::about);
     connect(ui->actioncontacter_nous, &QAction::triggered, this, &MainWindow::contact);
     connect(ui->actionajouter, &QAction::triggered, this, &MainWindow::add);
+    connect(ui->actionvoir, &QAction::triggered, this, &MainWindow::updateteacher);
     connect(ui->actionsupprimer, &QAction::triggered, this, &MainWindow::remove);
     connect(ui->actionsupprimer_tout,&QAction::triggered, this, &::MainWindow::removeall);
 
@@ -187,14 +193,18 @@ void MainWindow::contact()
     dialog.exec();
 }
 
+void MainWindow::updateteacher()
+{
+    editteacher dialog(this);
+    dialog.exec();
+}
+
+
 void MainWindow::add()
 {
     addteacher dialog(this);
 
     dialog.exec();
-    /* m_home->close();
-     m_home=new home();
-     ui->k->addWidget(m_home);*/
     Teachertable::model->select();
 }
 
@@ -206,6 +216,12 @@ void MainWindow::remove()
     qDebug()<<Teachertable::selected;
     query.exec();
     Teachertable::model->select();
+
+    //actualise data
+     edition::model->fetchMore();
+     QSqlQuery q = edition::model->query();
+     q.exec();
+     edition::model->setQuery(q);
 }
 
 void MainWindow::removeall()
@@ -219,6 +235,12 @@ void MainWindow::removeall()
     }
     Teachertable::model->select();
     qDebug()<<"all data removed";
+
+    //actualise data
+     edition::model->fetchMore();
+     QSqlQuery q = edition::model->query();
+     q.exec();
+     edition::model->setQuery(q);
 }
 void MainWindow::switchtohome()
 {

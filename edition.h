@@ -2,6 +2,8 @@
 #define EDITION_H
 
 #include <QWidget>
+#include"delay.h"
+#include"absence.h"
 #include "addnote.h"
 namespace Ui {
 class edition;
@@ -124,6 +126,12 @@ private slots:
     void on_dch_stateChanged(int arg1);
 
     void on_toolButton_clicked();
+
+    void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
+
+    void on_toolButton_4_clicked();
 
 private:
     Ui::edition *ui;

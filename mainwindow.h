@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "aboutdialog.h"
 #include "contactdialog.h"
+#include"editteacher.h"
 #include"home.h"
 #include"edition.h"
 #include"addteacher.h"
@@ -26,6 +27,7 @@ public slots:
     void removeall();
     void switchtohome();
     void actualisedata();
+    void updateteacher();
 private:
     edition *m_edit;
     home *m_home;

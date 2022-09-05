@@ -13,6 +13,8 @@ void edition::on_checkBox_8_stateChanged(int arg1){}
 void edition::on_spinBox_10_valueChanged(int arg1){}
 
 
+
+
 int edition::selected;
 
 edition::edition(QWidget *parent) :
@@ -40,13 +42,15 @@ edition::edition(QWidget *parent) :
 
     connect(ui->tableView->selectionModel(), &QItemSelectionModel::selectionChanged,this,&edition::onselectionchanged);
     if(edition::model->rowCount())
+
     {
         QModelIndex index =edition::model->index(0,0);
         ui->tableView->setCurrentIndex(index);
         ui->label_52->hide();
+
     }
     else
-    {
+    {   ui->widget->hide();
         ui->tabWidget->hide();
     }
 }
@@ -62,12 +66,28 @@ void edition::onselectionchanged()
 
         }
 
+        if(ui->tab->isHidden())
+        if(edition::model->rowCount())
+        {
+            ui->tableView->setCurrentIndex(index);
+            ui->label_52->hide();
+            ui->tabWidget->show();
+            ui->widget->show();
+
+        }
+
+
+        if(!edition::model->rowCount())
+        {
+            ui->tabWidget->hide();
+        }
+
     QSqlQuery query;
     query.prepare("SELECT *  FROM notation WHERE ID =(:id)");
     query.bindValue(":id",edition::selected);
     query.exec();
     query.next();
-    qDebug()<<query.value(1).toString()<<Teachertable::selected;
+  /*
   QFile f("notebase.htm");
     f.open(QFile::ReadOnly);
 QString html;
@@ -77,7 +97,7 @@ QString html;
     QString str=QString(f.readAll());
     qDebug()<<str;
 
-    QPrinter printer;
+   /* QPrinter printer;
         printer.setOutputFormat(QPrinter::NativeFormat);
         //printer.setOutputFileName("nonwritable.pdf");
         QPrintDialog printDialog(&printer);
@@ -90,7 +110,7 @@ QString html;
             doc.print(&printer);
         }
 
-   /*     QPainter painter;
+        QPainter painter;
     if (! painter.begin(&printer)) { // failed to open file
         qWarning("failed to open file, is it writable?");
 
@@ -159,10 +179,15 @@ painter.drawText(10, 10, "Test");
     ui->dsp->setChecked((query.value(51).toBool()==true)?true:false);
     ui->dch->setChecked((query.value(52).toBool()==true)?true:false);
 
+    ui->toolButton_4->setChecked(query.value(53).toBool()==true);
+    ui->tab->setDisabled(query.value(53).toBool());
+    ui->tab_2->setDisabled(query.value(53).toBool());
+    ui->tab_3->setDisabled(query.value(53).toBool());
 
 
 
-     qDebug()<<"la selection de la fiche de notation à changé";
+
+
 
 }
 edition::~edition()
@@ -616,6 +641,41 @@ void edition::on_toolButton_clicked()
     query.prepare("delete from notation where id=(:id)");
     query.bindValue(":id",edition::selected);
     query.exec();
+
+    edition::model->fetchMore();
+    query.exec();
+    QSqlQuery q = edition::model->query();
+    q.exec();
+    edition::model->setQuery(q);
+
+}
+
+
+void edition::on_pushButton_clicked()
+{
+    delay dialog;
+    dialog.exec();
+}
+
+
+void edition::on_pushButton_2_clicked()
+{
+    absence dialog;
+    dialog.exec();
+}
+
+
+void edition::on_toolButton_4_clicked()
+{
+
+        QSqlQuery query;
+        query.prepare("UPDATE notation set classed = (:val) where id=(:id)");
+        query.bindValue(":val",ui->toolButton_4->isChecked());
+        query.bindValue(":id",edition::selected);
+        query.exec();
+        ui->tab->setDisabled(ui->toolButton_4->isChecked());
+        ui->tab_2->setDisabled(ui->toolButton_4->isChecked());
+        ui->tab_3->setDisabled(ui->toolButton_4->isChecked());
 
 }
 

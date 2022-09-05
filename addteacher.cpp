@@ -53,10 +53,6 @@ void addteacher::on_buttonBox_accepted()
      QFile::copy(local_photo_path,photo_path );
     }
 
-
-
-
-
       // add a new teacher in  database
       QSqlQuery query;
       query.prepare("INSERT INTO teacher (name,first_name,sex,matricule,photo_path) VALUES (:name,:first_name,:sex,:matricule,:photo_path)");
@@ -65,7 +61,6 @@ void addteacher::on_buttonBox_accepted()
       query.bindValue(":sex",sex);
       query.bindValue(":matricule",matricule);
       query.bindValue(":photo_path",photo_path);
-      qDebug()<<photo_path;
       query.exec();
 
 }

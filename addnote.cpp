@@ -49,14 +49,11 @@ void addnote::on_addnote_accepted()
    query.bindValue(":teacherid",Teachertable::selected);
    query.bindValue(":annee",annee);
    query.bindValue(":slug",slug);
-
-
-
-  //works now!!
-
-
-   edition::model->fetchMore();
    query.exec();
+
+
+  //actualise data
+   edition::model->fetchMore();
    QSqlQuery q = edition::model->query();
    q.exec();
    edition::model->setQuery(q);

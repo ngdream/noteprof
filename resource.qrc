@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>add.png</file>
+        <file>edit.png</file>
+        <file>eloicon.png</file>
+        <file>grey_edit.png</file>
+        <file>grey_home.png</file>
+        <file>home.png</file>
+        <file>icon.svg</file>
+        <file>logo.jpg</file>
+        <file>rermove.png</file>
+        <file>print.png</file>
+        <file>check.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>check.png</file>
+    </qresource>
+</RCC>

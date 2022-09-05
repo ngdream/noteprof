@@ -11,10 +11,15 @@ CONFIG += c++17
 
 SOURCES += \
     aboutdialog.cpp \
+    absence.cpp \
+    addabsence.cpp \
+    adddelay.cpp \
     addnote.cpp \
     addteacher.cpp \
     contactdialog.cpp \
+    delay.cpp \
     edition.cpp \
+    editteacher.cpp \
     home.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -23,11 +28,16 @@ SOURCES += \
 
 HEADERS += \
     aboutdialog.h \
+    absence.h \
+    addabsence.h \
+    adddelay.h \
     addnote.h \
     addteacher.h \
     contactdialog.h \
     defs.h \
+    delay.h \
     edition.h \
+    editteacher.h \
     home.h \
     mainwindow.h \
     sidebar.h \
@@ -36,10 +46,15 @@ HEADERS += \
 FORMS += \
     about.ui \
     aboutdialog.ui \
+    absence.ui \
+    addabsence.ui \
+    adddelay.ui \
     addnote.ui \
     addteacher.ui \
     contactdialog.ui \
+    delay.ui \
     edition.ui \
+    editteacher.ui \
     home.ui \
     mainwindow.ui \
     usernotation.ui
@@ -48,3 +63,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    resource.qrc
